@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <title>Generator linków</title>
+    <style>
+        body
+        {
+            background-color: #222233;
+            color: #AACCFF;
+            font-family: Arial;
+            padding: 30px;
+        }
+        textarea
+        {
+            background-color: #222233;
+            color: #AACCFF;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>1.Skopiuj poniższy kod i wklej do konsoli otwieranej za pomocą zbadaj element na stronie timeless jewel generator:</h1>
+<pre>
+function yoink() {
+    let y = [];
+    arr = Array.from(document.getElementsByClassName('font-bold text-orange-500 text-center'));
+    arr.forEach(element => {
+        y.push(element.innerHTML.replace(/Seed |\(weight [0-9]+\)/g, '').trim())
+    });
+    return y;
+} 
+</pre>
+    <h1>2.Następnie przejdź do zakładki elements i kliknij przycisk kwadraciku z kursorem po czym kliknij na element o nazwie div tak jak na załączonym obrazku.</h1>
+    <img src="./screenshots/screen1.png" alt="screenshot przycisku i miejsca kliknięcia">
+    <h1>3.Zescrolluj results dopuki nie zniknie pierwszy div slots="item" i wróć trochę do góry żeby pojawił się ponownie.</h1>
+    <img src="./screenshots/screen2.png" alt="przykładowy screenshot div slots">
+    <h1>4.Następnie wklej do konsoli poniższy kod skopiuj otrzymane seedy poprzez PPM copy object i wklej w bezpieczne miejsce:</h1>
+    <p style="font-size: 30px;">console.log(yoink())</p>
+    <h1>5.Potem scrolluj Resultes póki nie zniknie ostatni wynik poprzedniej partii(można to rozpoznać po top:liczba pixeli) po czym powtórz krok czwarty. Powtarzaj dopóki nie skończą sie seedy.</h1>
+    <h1>6.Ostatnim korkiem będzie usunięcie zbędnych kwadratowych nawiasów i pododawanie przecinków tam gdzie trzeba. Jak to wykonasz wklej gotowe seedy od pola seeds i kliknij przycisk.</h1>
+    </div>
+    <h2>Seeds:</h2>
+    <textarea id="seeds" cols="30" rows="30" placeholder="Przykładowe seedy 
+[
+'13981',
+'16491',
+'16232',
+'15072',
+'15903',
+'10545',
+'11234',
+'15749',
+'12991',
+'17878',
+'12157',
+'13648'
+]"></textarea>
+    <h2>Jewel type</h2>
+    <select id="jewel">
+        <option value="1">Glorius Vanity</option>
+        <option value="2">Lethal Pride</option>
+        <option value="3">Brutal Restraint</option>
+        <option value="4">Militant Faith</option>
+        <option value="5">Elegant Hubris</option>
+    </select>
+    <h2>Conqueror</h2>
+    <select id="conq">
+        <option value="Ahuana">GV.Ahuana</option>
+        <option value="Xibaqua">GV.Xibaqua</option>
+        <option value="Doryani">GV.Doryani</option>
+        <option value="Kaom">LP.Kaom</option>
+        <option value="Rakiata">LP.Rakiata</option>
+        <option value="Akoya">LP.Akoya</option>
+        <option value="Balbala">BR.Balbala</option>
+        <option value="Asenath">BR.Asenath</option>
+        <option value="Nasima">BR.Nasima</option>
+        <option value="Maxarius">MF.Maxarius</option>
+        <option value="Dominus">MF.Dominus</option>
+        <option value="Avarius">MF.Avarius</option>
+        <option value="Cadiro">EH.Cadiro</option>
+        <option value="Victario">EH.Victario</option>
+        <option value="Caspiro">EH.Caspiro</option>
+    </select>
+    <button id="send-button" onclick="parsingform()">Kliknij aby wygenerować link</button>
+</body>
+</html>
