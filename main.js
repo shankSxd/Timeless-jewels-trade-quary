@@ -46,7 +46,7 @@ const constructQuery = (jewel, conqueror, result) => {
   }
 
   let stats;
-  if (seeds.length * 3 < maxQueries) {
+  if (true) {
     stats = [
       {
         type: 'count',
@@ -68,23 +68,24 @@ const constructQuery = (jewel, conqueror, result) => {
         disabled: false
       }
     ];
-  } else {
-    stats = Object.keys(tradeStatNames[jewel]).map((c) => ({
-      type: 'count',
-      value: {
-        min: 1
-      },
-      filters: seeds.map((seed) => ({
-        id: tradeStatNames[jewel][c],
-        disabled: false,
-        value: {
-          min: seed,
-          max: seed
-        }
-      })),
-      disabled: c != conqueror
-    }));
-  }
+  } 
+  // else {
+  //   stats = Object.keys(tradeStatNames[jewel]).map((c) => ({
+  //     type: 'count',
+  //     value: {
+  //       min: 1
+  //     },
+  //     filters: seeds.map((seed) => ({
+  //       id: tradeStatNames[jewel][c],
+  //       disabled: false,
+  //       value: {
+  //         min: seed,
+  //         max: seed
+  //       }
+  //     })),
+  //     disabled: c != conqueror
+  //   }));
+  // }
 
   return {
     query: {
