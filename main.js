@@ -46,6 +46,7 @@ const constructQuery = (jewel, conqueror, result) => {
   }
 
   let stats;
+// seeds.length * 3 < maxQueries
   if (true) {
     stats = [
       {
