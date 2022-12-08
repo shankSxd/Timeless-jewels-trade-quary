@@ -35,7 +35,7 @@ const tradeStatNames = {
 };
 
 const maxQueries = 65;
-const constructQuery = (jewel, conqueror, result) => {
+const constructQuery = (jewel, conqueror, result, wantDevision) => {
   let seeds = [];
 
   for (const r of result) {
@@ -47,7 +47,7 @@ const constructQuery = (jewel, conqueror, result) => {
 
   let stats;
 // seeds.length * 3 < maxQueries
-  if (true) {
+  if (wantDevision) {
     stats = [
       {
         type: 'count',
@@ -70,23 +70,23 @@ const constructQuery = (jewel, conqueror, result) => {
       }
     ];
   } 
-  // else {
-  //   stats = Object.keys(tradeStatNames[jewel]).map((c) => ({
-  //     type: 'count',
-  //     value: {
-  //       min: 1
-  //     },
-  //     filters: seeds.map((seed) => ({
-  //       id: tradeStatNames[jewel][c],
-  //       disabled: false,
-  //       value: {
-  //         min: seed,
-  //         max: seed
-  //       }
-  //     })),
-  //     disabled: c != conqueror
-  //   }));
-  // }
+  else {
+    stats = Object.keys(tradeStatNames[jewel]).map((c) => ({
+      type: 'count',
+      value: {
+        min: 1
+      },
+      filters: seeds.map((seed) => ({
+        id: tradeStatNames[jewel][c],
+        disabled: false,
+        value: {
+          min: seed,
+          max: seed
+        }
+      })),
+      disabled: c != conqueror
+    }));
+  }
 
   return {
     query: {
@@ -107,14 +107,15 @@ const constructQuery = (jewel, conqueror, result) => {
                 // jewel to int który oznacza nazwe jewela np: 2 - lethal pride
                 //        conqueror to string z nazwą conquerora np: Kaom
                 //                   results to jest array seedów np: 11557
-const openTrade = (jewel, conqueror, results) => {
+const openTrade = (jewel, conqueror, results, wantDevision) => {
     const url = new URL('https://www.pathofexile.com/trade/search/Sentinel');
-    url.searchParams.set('q', JSON.stringify(constructQuery(jewel, conqueror, results)));
+    url.searchParams.set('q', JSON.stringify(constructQuery(jewel, conqueror, results, wantDevision)));
     window.open(url, '_blank');
   };
 
 function parsingform()
 {
+  const wantDevision = !document.getElementById('wantDevison').checked
   const jewel = document.getElementById('jewel').value
   const conq = document.getElementById('conq').value
   const x = document.getElementById('seeds').value
@@ -123,6 +124,6 @@ function parsingform()
   y[0].forEach(element => {
       seeds.push(element)
   });
-  openTrade(Number(jewel), conq, seeds)
+  openTrade(Number(jewel), conq, seeds, wantDevision)
 }
 
